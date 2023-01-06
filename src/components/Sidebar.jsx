@@ -62,8 +62,14 @@ const Button = styled.button`
   color: #3ea6ff;
   border-radius: 3px;
   font-weight: 500;
-  margin-top: 10px;
+  margin: 15px 0 15px 0;
   cursor: pointer;
+`
+const Title = styled.h2`
+  font-size: 14px;
+  font-weight: 500;
+  color: #aaaaaa;
+  margin-bottom: 20px;
 `
 
 const Sidebar = ({darkMode, setDarkMode}) => {
@@ -103,6 +109,8 @@ const Sidebar = ({darkMode, setDarkMode}) => {
                         SIGN IN
                     </Button>
                 </Login>
+                <SectionDivider/>
+                <Title>Best of NewTube</Title>
                 <Item>
                     <LibraryMusicOutlinedIcon/>
                     Music
