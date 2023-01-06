@@ -30,9 +30,7 @@ function App() {
                 />
                 <Main>
                     <Navbar/>
-                    <Wrapper>
-
-                    </Wrapper>
+                    <Wrapper></Wrapper>
                 </Main>
             </Container>
         </ThemeProvider>

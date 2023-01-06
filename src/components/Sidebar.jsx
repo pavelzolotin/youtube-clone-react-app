@@ -25,7 +25,7 @@ const Container = styled.div`
   font-size: 14px;
   background-color: ${({theme}) => theme.bgSidebar};
   color: ${({theme}) => theme.text};
-  transition: all .3s ease;
+  transition: all .3s;
 `
 const Wrapper = styled.div`
   padding: 18px 26px
