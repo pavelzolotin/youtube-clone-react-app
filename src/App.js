@@ -29,7 +29,7 @@ const Main = styled.div`
   transition: background-color .3s;
 `
 const Wrapper = styled.div`
-padding: 25px 85px;
+  padding: 25px 85px;
 `
 
 function App() {

@@ -32,6 +32,9 @@ const Search = styled.div`
   border-radius: 5px;
 `
 const Input = styled.input`
+  width: 100%;
+  color: ${({theme}) => theme.text};
+  font-size: 16px;
   border: none;
   background-color: transparent;
 `

@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom'
+
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -5,7 +7,7 @@ const Container = styled.div`
   margin-bottom: 45px;
   cursor: pointer;
 `
-const Image = styled.div`
+const Image = styled.img`
   width: 100%;
   height: 200px;
   background-color: #999;
@@ -40,17 +42,19 @@ const Info = styled.div`
 
 const Card = () => {
     return (
-        <Container>
-            <Image/>
-            <Details>
-                <ChannelImage/>
-                <Texts>
-                    <Title>Title</Title>
-                    <Name>Name</Name>
-                    <Info>500,000 views 1 day ago</Info>
-                </Texts>
-            </Details>
-        </Container>
+        <Link to="/video/test" style={{textDecoration:'none'}}>
+            <Container>
+                <Image/>
+                <Details>
+                    <ChannelImage/>
+                    <Texts>
+                        <Title>Title</Title>
+                        <Name>Name</Name>
+                        <Info>500,000 views 1 day ago</Info>
+                    </Texts>
+                </Details>
+            </Container>
+        </Link>
     )
 }
 

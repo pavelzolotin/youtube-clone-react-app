@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom'
+
 import styled from 'styled-components'
 
 import LogoImage from '../img/logo.png'
@@ -77,10 +79,12 @@ const Sidebar = ({darkMode, setDarkMode}) => {
     return (
         <Container>
             <Wrapper>
-                <Logo>
-                    <Img src={LogoImage}/>
-                    NewTube
-                </Logo>
+                <Link to="/" style={{textDecoration: 'none', color: 'inherit'}}>
+                    <Logo>
+                        <Img src={LogoImage}/>
+                        NewTube
+                    </Logo>
+                </Link>
                 <Item>
                     <HomeIcon/>
                     Home
