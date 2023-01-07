@@ -3,21 +3,27 @@ import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 
 const Container = styled.div`
-  width: 360px;
-  margin-bottom: 45px;
+  display: ${(props) => props.type === 'sm' && 'flex'};
+  gap: 12px;
+  width: {(props) => props.type !== 'sm' && '360px'};
+  margin-bottom: ${(props) => props.type === 'sm' ? '12px' : '45px'};;
   cursor: pointer;
 `
 const Image = styled.img`
+  display: flex;
+  flex: 1;
   width: 100%;
-  height: 200px;
+  height: ${(props) => props.type === 'sm' ? '100px' : '200px'};
   background-color: #999;
 `
 const Details = styled.div`
   display: flex;
-  margin-top: 15px;
+  flex: 1;
+  margin-top: ${(props) => props.type !== 'sm' && '15px'};
   gap: 12px;
 `
 const ChannelImage = styled.div`
+  display: ${(props) => props.type === 'sm' && 'none'};
   width: 35px;
   height: 35px;
   border-radius: 50%;
@@ -41,13 +47,13 @@ const Info = styled.div`
   margin: 8px 0;
 `
 
-const Card = () => {
+const Card = ({type}) => {
     return (
-        <Link to="/video/test" style={{textDecoration:'none'}}>
-            <Container>
-                <Image/>
-                <Details>
-                    <ChannelImage/>
+        <Link to="/video/test" style={{textDecoration: 'none'}}>
+            <Container type={type}>
+                <Image type={type}/>
+                <Details type={type}>
+                    <ChannelImage type={type}/>
                     <Texts>
                         <Title>Title</Title>
                         <Name>Name</Name>

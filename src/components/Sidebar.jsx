@@ -46,8 +46,13 @@ const Item = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 8px 0;
+  padding: 7px 0 7px 10px;
+  border-radius: 2px;
   cursor: pointer;
+  
+  &:hover {
+    background-color: ${({theme}) => theme.dividerColor};
+  }
 `
 const SectionDivider = styled.hr`
   margin: 15px 0;
@@ -55,6 +60,7 @@ const SectionDivider = styled.hr`
   transition: border .3s ease;
 `
 const Login = styled.div``
+
 const Button = styled.button`
   display: flex;
   align-items: center;

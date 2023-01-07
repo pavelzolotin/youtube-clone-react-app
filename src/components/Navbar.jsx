@@ -28,8 +28,14 @@ const Search = styled.div`
   right: 0;
   margin: auto;
   padding: 5px;
-  border: 1.5px solid #ccc;
+  border: 1px solid #ccc;
   border-radius: 5px;
+`
+const SearchIcon = styled.div`
+  display: flex;
+  align-items: center;
+  color: ${({theme}) => theme.text};
+  cursor: pointer;
 `
 const Input = styled.input`
   width: 100%;
@@ -58,7 +64,9 @@ const Navbar = () => {
             <Wrapper>
                 <Search>
                     <Input placeholder="Search"/>
-                    <SearchOutlinedIcon/>
+                    <SearchIcon>
+                        <SearchOutlinedIcon/>
+                    </SearchIcon>
                 </Search>
                 <Button>
                     <AccountCircleOutlinedIcon/>
