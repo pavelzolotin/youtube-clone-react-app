@@ -6,6 +6,7 @@ import Sidebar from './components/Sidebar'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Video from './pages/Video'
+import AuthN from './pages/AuthN'
 
 import {darkTheme, lightTheme} from './utils/Theme'
 
@@ -52,9 +53,10 @@ function App() {
                             <Routes>
                                 <Route path="/">
                                     <Route index element={<Home/>}/>
-                                </Route>
-                                <Route path="video">
-                                    <Route path=":id" element={<Video/>}/>
+                                    <Route path="authN" element={<AuthN/>}/>
+                                    <Route path="video">
+                                        <Route path=":id" element={<Video/>}/>
+                                    </Route>
                                 </Route>
                             </Routes>
                         </Wrapper>

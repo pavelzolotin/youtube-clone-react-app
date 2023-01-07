@@ -49,7 +49,7 @@ const Item = styled.div`
   padding: 7px 0 7px 10px;
   border-radius: 2px;
   cursor: pointer;
-  
+
   &:hover {
     background-color: ${({theme}) => theme.dividerColor};
   }
@@ -115,10 +115,12 @@ const Sidebar = ({darkMode, setDarkMode}) => {
                 <SectionDivider/>
                 <Login>
                     Sign in to like videos, comment and subscribe.
-                    <Button>
-                        <AccountCircleOutlinedIcon/>
-                        SIGN IN
-                    </Button>
+                    <Link to="authN" style={{textDecoration: 'none'}}>
+                        <Button>
+                            <AccountCircleOutlinedIcon/>
+                            SIGN IN
+                        </Button>
+                    </Link>
                 </Login>
                 <SectionDivider/>
                 <Title>Best of NewTube</Title>
