@@ -1,8 +1,11 @@
 import {useState} from 'react'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import styled, {ThemeProvider, createGlobalStyle} from 'styled-components'
 
 import Sidebar from './components/Sidebar'
 import Navbar from './components/Navbar'
+import Home from './pages/Home'
+import Video from './pages/Video'
 
 import {darkTheme, lightTheme} from './utils/Theme'
 
@@ -23,9 +26,11 @@ const Container = styled.div`
 const Main = styled.div`
   flex: 7;
   background-color: ${({theme}) => theme.bgBody};
-  transition: background-color .3s ease;
+  transition: background-color .3s;
 `
-const Wrapper = styled.div``
+const Wrapper = styled.div`
+padding: 25px 85px;
+`
 
 function App() {
     const [darkMode, setDarkMode] = useState(true)
@@ -36,14 +41,25 @@ function App() {
         >
             <GlobalStyle/>
             <Container>
-                <Sidebar
-                    darkMode={darkMode}
-                    setDarkMode={setDarkMode}
-                />
-                <Main>
-                    <Navbar/>
-                    <Wrapper></Wrapper>
-                </Main>
+                <BrowserRouter>
+                    <Sidebar
+                        darkMode={darkMode}
+                        setDarkMode={setDarkMode}
+                    />
+                    <Main>
+                        <Navbar/>
+                        <Wrapper>
+                            <Routes>
+                                <Route path="/">
+                                    <Route index element={<Home/>}/>
+                                </Route>
+                                <Route path="video">
+                                    <Route path=":id" element={<Video/>}/>
+                                </Route>
+                            </Routes>
+                        </Wrapper>
+                    </Main>
+                </BrowserRouter>
             </Container>
         </ThemeProvider>
     )

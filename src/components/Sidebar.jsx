@@ -21,6 +21,7 @@ import SettingsBrightnessOutlinedIcon from '@mui/icons-material/SettingsBrightne
 const Container = styled.div`
   flex: 1;
   position: sticky;
+  top: 0;
   height: 100vh;
   font-size: 14px;
   background-color: ${({theme}) => theme.bgSidebar};
