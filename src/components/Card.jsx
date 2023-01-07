@@ -24,6 +24,7 @@ const ChannelImage = styled.div`
   background-color: #999;
 `
 const Texts = styled.div``
+
 const Title = styled.h1`
   font-size: 16px;
   font-weight: 500;
