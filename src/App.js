@@ -1,11 +1,22 @@
 import {useState} from 'react'
-import styled, {ThemeProvider} from 'styled-components'
+import styled, {ThemeProvider, createGlobalStyle} from 'styled-components'
 
 import Sidebar from './components/Sidebar'
 import Navbar from './components/Navbar'
 
 import {darkTheme, lightTheme} from './utils/Theme'
 
+const GlobalStyle = createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+  }
+`
 const Container = styled.div`
   display: flex;
 `
@@ -23,6 +34,7 @@ function App() {
         <ThemeProvider
             theme={darkMode ? darkTheme : lightTheme}
         >
+            <GlobalStyle/>
             <Container>
                 <Sidebar
                     darkMode={darkMode}
