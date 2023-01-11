@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom'
+import {useSelector} from 'react-redux'
 
 import styled from 'styled-components'
 
@@ -82,6 +83,8 @@ const Title = styled.h2`
 `
 
 const Sidebar = ({darkMode, setDarkMode}) => {
+    const {currentUser} = useSelector(state => state.user)
+
     return (
         <Container>
             <Wrapper>
@@ -95,14 +98,18 @@ const Sidebar = ({darkMode, setDarkMode}) => {
                     <HomeIcon/>
                     Home
                 </Item>
-                <Item>
-                    <ExploreOutlinedIcon/>
-                    Explore
-                </Item>
-                <Item>
-                    <SubscriptionsOutlinedIcon/>
-                    Subscriptions
-                </Item>
+                <Link to="trends" style={{textDecoration: 'none', color: 'inherit'}}>
+                    <Item>
+                        <ExploreOutlinedIcon/>
+                        Explore
+                    </Item>
+                </Link>
+                <Link to="subscriptions" style={{textDecoration: 'none', color: 'inherit'}}>
+                    <Item>
+                        <SubscriptionsOutlinedIcon/>
+                        Subscriptions
+                    </Item>
+                </Link>
                 <SectionDivider/>
                 <Item>
                     <VideoLibraryOutlinedIcon/>
@@ -113,15 +120,19 @@ const Sidebar = ({darkMode, setDarkMode}) => {
                     History
                 </Item>
                 <SectionDivider/>
-                <Login>
-                    Sign in to like videos, comment and subscribe.
-                    <Link to="authN" style={{textDecoration: 'none'}}>
-                        <Button>
-                            <AccountCircleOutlinedIcon/>
-                            SIGN IN
-                        </Button>
-                    </Link>
-                </Login>
+                {!currentUser &&
+                    <>
+                        <Login>
+                            Sign in to like videos, comment and subscribe.
+                            <Link to="sign-in" style={{textDecoration: 'none'}}>
+                                <Button>
+                                    <AccountCircleOutlinedIcon/>
+                                    SIGN IN
+                                </Button>
+                            </Link>
+                        </Login>
+                    </>
+                }
                 <SectionDivider/>
                 <Title>Best of NewTube</Title>
                 <Item>
