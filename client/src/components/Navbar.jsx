@@ -66,9 +66,10 @@ const User = styled.div`
   align-items: center;
   gap: 10px;
   font-weight: 500;
+  color: ${({theme}) => theme.text};
 `
 
-const Avatar = styled.div`
+const Avatar = styled.img`
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -90,7 +91,9 @@ const Navbar = () => {
                 {currentUser ? (
                     <User>
                         <VideoCallOutlinedIcon/>
-                        <Avatar/>
+                        <Avatar
+                            src={currentUser.img}
+                        />
                         {currentUser.name}
                     </User>
                 ) : (

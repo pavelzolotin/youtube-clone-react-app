@@ -5,6 +5,9 @@ import styled from 'styled-components'
 import axios from 'axios'
 
 import {loginFailure, loginStart, loginSuccess} from '../redux/userSlice'
+import {auth, provider} from '../firebase'
+import {signInWithPopup} from 'firebase/auth'
+
 
 const Container = styled.div`
   display: flex;
@@ -42,7 +45,6 @@ const Input = styled.input`
   background-color: transparent;
 `
 const Button = styled.button`
-  margin-top: 12px;
   padding: 10px 20px;
   font-weight: 500;
   text-transform: uppercase;
@@ -85,6 +87,24 @@ const SignIn = () => {
         }
     }
 
+    const signInWithGoogle = async() => {
+        dispatch(loginStart())
+        signInWithPopup(auth, provider)
+            .then(result => {
+                axios.post('/auth/google', {
+                    name: result.user.displayName,
+                    email: result.user.email,
+                    img: result.user.photoURL
+                })
+                    .then(res => {
+                        dispatch(loginSuccess(res.data))
+                    })
+            })
+            .catch(err => {
+                dispatch(loginFailure())
+            })
+    }
+
     return (
         <Container>
             <Wrapper>
@@ -104,6 +124,8 @@ const SignIn = () => {
                 >
                     Sign In
                 </Button>
+                <SubTitle>or</SubTitle>
+                <Button onClick={signInWithGoogle}>Sign In with Google</Button>
                 <SubTitle>or</SubTitle>
                 <Input
                     placeholder="username"
