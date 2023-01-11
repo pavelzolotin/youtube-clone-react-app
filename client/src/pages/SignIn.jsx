@@ -1,3 +1,4 @@
+import {useState} from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -31,7 +32,7 @@ const Input = styled.input`
   width: 100%;
   padding: 10px;
   color: ${({theme}) => theme.text};
-  border: 1px solid ${({theme}) => theme.text};
+  border: 1px solid ${({theme}) => theme.textSoft};
   border-radius: 5px;
   background-color: transparent;
 `
@@ -40,6 +41,7 @@ const Button = styled.button`
   padding: 10px 20px;
   font-weight: 500;
   text-transform: uppercase;
+  letter-spacing: 1.6px;
   border-radius: 5px;
   border: none;
   color: ${({theme}) => theme.text};
@@ -59,18 +61,54 @@ const Link = styled.span`
   margin-left: 30px;
 `
 
-const AuthN = () => {
+const Auth = () => {
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const handleLogin = async(e) => {
+        e.preventDefault()
+        try {
+            const res = await axios.post('/auth/')
+        } catch {
+
+        }
+    }
+
     return (
         <Container>
             <Wrapper>
                 <Title>Sign In</Title>
                 <SubTitle>to continue to NewTube</SubTitle>
-                <Input placeholder="username"/>
-                <Input type="password" placeholder="password"/>
-                <Button>Sign In</Button>
+                <Input
+                    placeholder="username"
+                    onChange={e => setName(e.target.value)}
+                />
+                <Input
+                    type="password"
+                    placeholder="password"
+                    onChange={e => setPassword(e.target.value)}
+                />
+                <Button
+                    onClick={handleLogin}
+                >
+                    Sign In
+                </Button>
                 <SubTitle>or</SubTitle>
-                <Input placeholder="username"/>
-                <Input type="email" placeholder="email"/>
+                <Input
+                    placeholder="username"
+                    onChange={e => setName(e.target.value)}
+                />
+                <Input
+                    type="email"
+                    placeholder="email"
+                    onChange={e => setEmail(e.target.value)}
+                />
+                <Input
+                    type="password"
+                    placeholder="password"
+                    onChange={e => setPassword(e.target.value)}
+                />
                 <Button>Sign Up</Button>
             </Wrapper>
             <Info>
@@ -85,4 +123,4 @@ const AuthN = () => {
     )
 }
 
-export default AuthN
+export default Auth
