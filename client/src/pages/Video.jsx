@@ -13,7 +13,8 @@ import ReplyOutlinedIcon from '@mui/icons-material/ReplyOutlined'
 import AddTaskOutlinedIcon from '@mui/icons-material/AddTaskOutlined'
 
 import Comments from '../components/Comments'
-import {fetchSuccess} from '../redux/videoSlice'
+import {fetchSuccess, like, dislike} from '../redux/videoSlice'
+import {subscription} from '../redux/userSlice'
 
 const Container = styled.div`
   display: flex;
@@ -24,9 +25,6 @@ const VideoWrapper = styled.div``
 const Content = styled.div`
   flex: 5;
 `
-// const Recommendation = styled.div`
-//   flex: 2;
-// `
 const Details = styled.div`
   display: flex;
   align-items: center;
@@ -216,7 +214,9 @@ const Video = () => {
                     </Subscribe>
                 </Channel>
                 <SectionDivider/>
-                <Comments/>
+                <Comments
+                    videoId={currentVideo._id}
+                />
             </Content>
 
         </Container>
