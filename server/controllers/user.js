@@ -8,7 +8,7 @@ export const updateUser = async(req, res, next) => {
             const updatedUser = await User.findByIdAndUpdate(
                 req.params.id,
                 {
-                    $set: res.body
+                    $set: req.body
                 },
                 {
                     new: true
