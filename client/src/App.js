@@ -23,11 +23,11 @@ const GlobalStyle = createGlobalStyle`
 
   ::-webkit-scrollbar {
     width: 16px;
-    background-color: #F5F5F5;
   }
 
   ::-webkit-scrollbar-track {
-    background-color: #202020;
+    background-color: ${({theme}) => theme.scrollbarBgColor};
+    transition: background-color .3s;
   }
 
   ::-webkit-scrollbar-thumb {
