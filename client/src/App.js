@@ -20,6 +20,23 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Roboto', sans-serif;
   }
+
+  ::-webkit-scrollbar {
+    width: 16px;
+    background-color: #F5F5F5;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #202020;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    background-color: #aaaaaa;
+  }
 `
 const Container = styled.div`
   display: flex;
