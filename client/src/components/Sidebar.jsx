@@ -120,7 +120,7 @@ const Sidebar = ({darkMode, setDarkMode}) => {
                     History
                 </Item>
                 <SectionDivider/>
-                {!currentUser &&
+                {!currentUser ? (
                     <>
                         <Login>
                             Sign in to like videos, comment and subscribe.
@@ -131,10 +131,15 @@ const Sidebar = ({darkMode, setDarkMode}) => {
                                 </Button>
                             </Link>
                         </Login>
+                        <SectionDivider/>
+                        <Title>In trends</Title>
                     </>
+                ) : (
+                    <>
+                        <Title>Subscriptions</Title>
+                    </>
+                )
                 }
-                <SectionDivider/>
-                <Title>Best of NewTube</Title>
                 <Item>
                     <LibraryMusicOutlinedIcon/>
                     Music
