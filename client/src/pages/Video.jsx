@@ -12,6 +12,7 @@ import ThumbDownOffAltOutlinedIcon from '@mui/icons-material/ThumbDownOffAltOutl
 import ReplyOutlinedIcon from '@mui/icons-material/ReplyOutlined'
 import AddTaskOutlinedIcon from '@mui/icons-material/AddTaskOutlined'
 
+import Recommendation from '../components/Recommendation'
 import Comments from '../components/Comments'
 import {fetchSuccess, like, dislike} from '../redux/videoSlice'
 import {subscription} from '../redux/userSlice'
@@ -220,6 +221,9 @@ const Video = () => {
                     videoId={currentVideo?._id}
                 />
             </Content>
+            <Recommendation
+                tags={currentVideo.tags}
+            />
         </Container>
     )
 }
