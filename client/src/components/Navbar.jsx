@@ -116,7 +116,12 @@ const Navbar = () => {
                     }
                 </Wrapper>
             </Container>
-            {uploadFileOpen && <Upload setUploadFileOpen={setUploadFileOpen}/>}
+            {
+                uploadFileOpen &&
+                <Upload
+                    setUploadFileOpen={setUploadFileOpen}
+                />
+            }
         </>
     )
 }

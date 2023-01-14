@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 
 import styled from 'styled-components'
@@ -82,8 +82,12 @@ const Upload = ({setUploadFileOpen}) => {
 
     const navigate = useNavigate()
 
-    const handleTags = (e) => {
-        setTags(e.target.value.split(','))
+    const handleUpload = async(e) => {
+        e.preventDefault()
+        const res = await axios.post('/videos', {...inputs, tags})
+
+        setUploadFileOpen(false)
+        res.status === 200 && navigate(`/video/${res.data._id}`)
     }
 
     const handleChange = (e) => {
@@ -92,11 +96,8 @@ const Upload = ({setUploadFileOpen}) => {
         })
     }
 
-    const handleUpload = async(e) => {
-        e.preventDefault()
-        const res = await axios.post('/videos', {...inputs, tags})
-        setUploadFileOpen(false)
-        res.status === 200 && navigate(`/video/${res.data._id}`)
+    const handleTags = (e) => {
+        setTags(e.target.value.split(','))
     }
 
     const uploadFile = (file, urlType) => {
@@ -122,8 +123,7 @@ const Upload = ({setUploadFileOpen}) => {
                         break;
                 }
             },
-            (error) => {
-            },
+            (error) => {},
             () => {
                 getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                     setInputs((prev) => {
