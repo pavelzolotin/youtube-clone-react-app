@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import {useSelector} from 'react-redux'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 import styled from 'styled-components'
 import VideoCallOutlinedIcon from '@mui/icons-material/VideoCallOutlined';
@@ -48,6 +48,10 @@ const Input = styled.input`
   font-size: 16px;
   border: none;
   background-color: transparent;
+
+  &:focus-visible {
+    outline: none;
+  }
 `
 const Button = styled.button`
   display: flex;
@@ -78,19 +82,53 @@ const Avatar = styled.img`
 const UploadFileButton = styled.div`
   cursor: pointer;
 `
+const SearchClose = styled.div`
+  display: flex;
+  margin-right: 15px;
+  font-weight: 500;
+  color: ${({theme}) => theme.text};
+  cursor: pointer;
+`
 
 const Navbar = () => {
     const [uploadFileOpen, setUploadFileOpen] = useState(false)
+    const [query, setQuery] = useState('')
     const {currentUser} = useSelector(state => state.user)
+    const navigate = useNavigate()
+
+    const addQuery = (e) => {
+        setQuery(e.target.value)
+    }
+
+    const clearQuery = () => {
+        setQuery('')
+    }
 
     return (
         <>
             <Container>
                 <Wrapper>
                     <Search>
-                        <Input placeholder="Search"/>
+                        <Input
+                            placeholder="Search"
+                            onChange={addQuery}
+                            value={query}
+                        />
+                        {
+                            query.length > 0 ? (
+                                <SearchClose
+                                    onClick={clearQuery}
+                                >
+                                    <span>X</span>
+                                </SearchClose>
+                            ) : (
+                                ''
+                            )
+                        }
                         <SearchIcon>
-                            <SearchOutlinedIcon/>
+                            <SearchOutlinedIcon
+                                onClick={() => navigate(`/search?q=${query}`)}
+                            />
                         </SearchIcon>
                     </Search>
                     {currentUser ? (

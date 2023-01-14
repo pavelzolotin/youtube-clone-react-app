@@ -7,6 +7,7 @@ import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Video from './pages/Video'
 import SignIn from './pages/SignIn'
+import Search from './pages/Search'
 
 import {darkTheme, lightTheme} from './utils/Theme'
 
@@ -85,6 +86,10 @@ function App() {
                                         <Home
                                             type="subscribe"
                                         />
+                                    }
+                                    />
+                                    <Route path="search" element={
+                                        <Search/>
                                     }
                                     />
                                     <Route path="sign-in" element={

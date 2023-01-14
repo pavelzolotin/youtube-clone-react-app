@@ -1,30 +1,34 @@
 import {useEffect, useState} from 'react'
+import {useLocation} from 'react-router-dom'
 
 import axios from 'axios'
 import styled from 'styled-components'
 
-import Card from './Card'
+import Card from '../components/Card'
 
 const Container = styled.div`
-  flex: 2;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 `
 
-const Recommendation = ({tags}) => {
+const Search = () => {
     const [videos, setVideos] = useState([])
+
+    const query = useLocation().search
 
     useEffect(() => {
         const fetchVideos = async() => {
-            const res = await axios.get(`/videos/tags?tags=${tags}`)
+            const res = await axios.get(`/videos/search${query}`)
             setVideos(res.data)
         }
         fetchVideos()
-    }, [tags])
+    }, [query])
 
     return (
         <Container>
             {videos.map((video) => (
                 <Card
-                    type="sm"
                     key={video._id}
                     video={video}
                 />
@@ -33,4 +37,4 @@ const Recommendation = ({tags}) => {
     )
 }
 
-export default Recommendation
+export default Search
