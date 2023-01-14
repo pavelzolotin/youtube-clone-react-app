@@ -145,22 +145,22 @@ const Video = () => {
             <Content>
                 <VideoWrapper>
                     <VideoFrame
-                        src={currentVideo.videoUrl}
+                        src={currentVideo?.videoUrl}
                     />
                 </VideoWrapper>
                 <Title>
-                    {currentVideo.title}
+                    {currentVideo?.title}
                 </Title>
                 <Details>
                     <Info>
-                        {currentVideo.views} views • {format(currentVideo.createdAt)}
+                        {currentVideo?.views} views • {format(currentVideo?.createdAt)}
                     </Info>
                     <Buttons>
                         <Button
                             onClick={handleLike}
                         >
                             {
-                                currentVideo.likes?.includes(currentUser._id) ? (
+                                currentVideo.likes?.includes(currentUser?._id) ? (
                                     <ThumbUpIcon/>
                                 ) : (
                                     <ThumbUpOutlinedIcon/>
@@ -171,7 +171,7 @@ const Video = () => {
                             onClick={handleDislike}
                         >
                             {
-                                currentVideo.dislikes?.includes(currentUser._id) ? (
+                                currentVideo.dislikes.includes(currentUser?._id) ? (
                                     ThumbDownIcon
                                 ) : (
                                     <ThumbDownOffAltOutlinedIcon/>
@@ -193,13 +193,13 @@ const Video = () => {
                 <Channel>
                     <ChannelInfo>
                         <Image
-                            src={channel.img}
+                            src={channel?.img}
                         />
                         <ChannelDetail>
-                            <ChannelName>{channel.name}</ChannelName>
-                            <ChannelCounter>{channel.subscribers}</ChannelCounter>
+                            <ChannelName>{channel?.name}</ChannelName>
+                            <ChannelCounter>{channel?.subscribers}</ChannelCounter>
                             <Description>
-                                {currentVideo.desc}
+                                {currentVideo?.desc}
                             </Description>
                         </ChannelDetail>
                     </ChannelInfo>
@@ -207,7 +207,7 @@ const Video = () => {
                         onClick={handleSubscribe}
                     >
                         {
-                            currentUser.subscribedUsers?.includes(channel._id)
+                            currentUser.subscribedUsers?.includes(channel?._id)
                                 ? 'Subscribed'
                                 : 'Subscribe'
                         }
@@ -215,7 +215,7 @@ const Video = () => {
                 </Channel>
                 <SectionDivider/>
                 <Comments
-                    videoId={currentVideo._id}
+                    videoId={currentVideo?._id}
                 />
             </Content>
 
