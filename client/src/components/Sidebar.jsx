@@ -94,10 +94,12 @@ const Sidebar = ({darkMode, setDarkMode}) => {
                         NewTube
                     </Logo>
                 </Link>
-                <Item>
-                    <HomeIcon/>
-                    Home
-                </Item>
+                <Link to="/" style={{textDecoration: 'none', color: 'inherit'}}>
+                    <Item>
+                        <HomeIcon/>
+                        Home
+                    </Item>
+                </Link>
                 <Link to="trends" style={{textDecoration: 'none', color: 'inherit'}}>
                     <Item>
                         <ExploreOutlinedIcon/>

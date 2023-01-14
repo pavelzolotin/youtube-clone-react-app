@@ -102,7 +102,7 @@ const VideoFrame = styled.video`
 `
 
 const Video = () => {
-    const {currentUser} = useSelector((state) => state.user)
+    const {currentUser} = useSelector(state => state.user)
     const {currentVideo} = useSelector(state => state.video)
     const dispatch = useDispatch()
 
@@ -146,6 +146,7 @@ const Video = () => {
                 <VideoWrapper>
                     <VideoFrame
                         src={currentVideo?.videoUrl}
+                        controls
                     />
                 </VideoWrapper>
                 <Title>
@@ -166,13 +167,14 @@ const Video = () => {
                                     <ThumbUpOutlinedIcon/>
                                 )
                             }{''}
+                            {currentVideo.likes?.length}
                         </Button>
                         <Button
                             onClick={handleDislike}
                         >
                             {
-                                currentVideo.dislikes.includes(currentUser?._id) ? (
-                                    ThumbDownIcon
+                                currentVideo.dislikes?.includes(currentUser?._id) ? (
+                                    <ThumbDownIcon/>
                                 ) : (
                                     <ThumbDownOffAltOutlinedIcon/>
                                 )
@@ -197,7 +199,7 @@ const Video = () => {
                         />
                         <ChannelDetail>
                             <ChannelName>{channel?.name}</ChannelName>
-                            <ChannelCounter>{channel?.subscribers}</ChannelCounter>
+                            <ChannelCounter>{channel?.subscribers} subscribers</ChannelCounter>
                             <Description>
                                 {currentVideo?.desc}
                             </Description>
@@ -218,7 +220,6 @@ const Video = () => {
                     videoId={currentVideo?._id}
                 />
             </Content>
-
         </Container>
     )
 }
