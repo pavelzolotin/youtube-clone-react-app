@@ -222,7 +222,7 @@ const Video = () => {
                 />
             </Content>
             <Recommendation
-                tags={currentVideo.tags}
+                tags={currentVideo?.tags}
             />
         </Container>
     )
