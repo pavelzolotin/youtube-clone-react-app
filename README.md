@@ -3,15 +3,16 @@
 YouTube Clone Application built with MERN Stack.
 
 Stack:
-MongoDB
-Express.js
-Node.js
-Firebase
-React
-React Router v6
-React Redux-toolkit
-Axios
-Styled-components
+
+MongoDB\
+Express.js\
+Node.js\
+Firebase\
+React\
+React Router v6\
+React Redux-toolkit\
+Axios\
+Styled-components\
 Material UI
 
 ## Available Scripts
