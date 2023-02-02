@@ -18,7 +18,7 @@ const Recommendation = ({tags}) => {
             setVideos(res.data);
         }
         fetchVideos();
-    }, [tags])
+    }, [tags]);
 
     return (
         <Container>

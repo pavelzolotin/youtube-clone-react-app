@@ -136,11 +136,11 @@ const Upload = ({setUploadFileOpen}) => {
 
     useEffect(() => {
         video && uploadFile(video, 'videoUrl');
-    }, [video])
+    }, [video]);
 
     useEffect(() => {
         img && uploadFile(img, 'imgUrl');
-    }, [img])
+    }, [img]);
 
     return (
         <Container>

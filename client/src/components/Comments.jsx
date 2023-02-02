@@ -29,7 +29,6 @@ const Input = styled.input`
 
 const Comments = ({videoId}) => {
     const {currentUser} = useSelector(state => state.user);
-
     const [comments, setComments] = useState([]);
 
     useEffect(() => {
@@ -40,7 +39,7 @@ const Comments = ({videoId}) => {
             } catch (err) {}
         }
         fetchComments();
-    }, [videoId])
+    }, [videoId]);
 
     return (
         <Container>

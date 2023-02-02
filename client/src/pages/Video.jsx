@@ -118,11 +118,10 @@ const Video = () => {
                 const channelRes = await axios.get(`/users/find/${videoRes.data.userId}`);
                 setChannel(channelRes.data);
                 dispatch(fetchSuccess(videoRes.data));
-            } catch (err) {
-            }
+            } catch (err) {}
         }
         fetchData();
-    }, [path, dispatch])
+    }, [path, dispatch]);
 
     const handleLike = async() => {
         await axios.put(`/users/like/${currentVideo._id}`);

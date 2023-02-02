@@ -23,7 +23,7 @@ const Search = () => {
             setVideos(res.data);
         }
         fetchVideos();
-    }, [query])
+    }, [query]);
 
     return (
         <Container>
