@@ -1,12 +1,12 @@
-import {useState} from 'react'
-import {useSelector} from 'react-redux'
-import {Link, useNavigate} from 'react-router-dom'
+import {useState} from 'react';
+import {useSelector} from 'react-redux';
+import {Link, useNavigate} from 'react-router-dom';
 
-import styled from 'styled-components'
-import VideoCallOutlinedIcon from '@mui/icons-material/VideoCallOutlined'
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined'
-import Upload from './Upload'
+import styled from 'styled-components';
+import VideoCallOutlinedIcon from '@mui/icons-material/VideoCallOutlined';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import Upload from './Upload';
 
 const Container = styled.div`
   position: sticky;
@@ -91,17 +91,17 @@ const SearchClose = styled.div`
 `
 
 const Navbar = () => {
-    const [uploadFileOpen, setUploadFileOpen] = useState(false)
-    const [query, setQuery] = useState('')
-    const {currentUser} = useSelector(state => state.user)
-    const navigate = useNavigate()
+    const [uploadFileOpen, setUploadFileOpen] = useState(false);
+    const [query, setQuery] = useState('');
+    const {currentUser} = useSelector(state => state.user);
+    const navigate = useNavigate();
 
     const addQuery = (e) => {
-        setQuery(e.target.value)
+        setQuery(e.target.value);
     }
 
     const clearQuery = () => {
-        setQuery('')
+        setQuery('');
     }
 
     return (
@@ -161,7 +161,7 @@ const Navbar = () => {
                 />
             }
         </>
-    )
+    );
 }
 
-export default Navbar
+export default Navbar;

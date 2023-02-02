@@ -1,21 +1,21 @@
-import {useEffect, useState} from 'react'
-import {useLocation} from 'react-router-dom'
-import {useSelector, useDispatch} from 'react-redux'
+import {useEffect, useState} from 'react';
+import {useLocation} from 'react-router-dom';
+import {useSelector, useDispatch} from 'react-redux';
 
-import axios from 'axios'
-import styled from 'styled-components'
-import {format} from 'timeago.js'
-import ThumbUpIcon from '@mui/icons-material/ThumbUp'
-import ThumbDownIcon from '@mui/icons-material/ThumbDown'
-import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined'
-import ThumbDownOffAltOutlinedIcon from '@mui/icons-material/ThumbDownOffAltOutlined'
-import ReplyOutlinedIcon from '@mui/icons-material/ReplyOutlined'
-import AddTaskOutlinedIcon from '@mui/icons-material/AddTaskOutlined'
+import axios from 'axios';
+import styled from 'styled-components';
+import {format} from 'timeago.js';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
+import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
+import ThumbDownOffAltOutlinedIcon from '@mui/icons-material/ThumbDownOffAltOutlined';
+import ReplyOutlinedIcon from '@mui/icons-material/ReplyOutlined';
+import AddTaskOutlinedIcon from '@mui/icons-material/AddTaskOutlined';
 
-import Recommendation from '../components/Recommendation'
-import Comments from '../components/Comments'
-import {fetchSuccess, like, dislike} from '../redux/videoSlice'
-import {subscription} from '../redux/userSlice'
+import Recommendation from '../components/Recommendation';
+import Comments from '../components/Comments';
+import {fetchSuccess, like, dislike} from '../redux/videoSlice';
+import {subscription} from '../redux/userSlice';
 
 const Container = styled.div`
   display: flex;
@@ -103,42 +103,42 @@ const VideoFrame = styled.video`
 `
 
 const Video = () => {
-    const {currentUser} = useSelector(state => state.user)
-    const {currentVideo} = useSelector(state => state.video)
-    const dispatch = useDispatch()
+    const {currentUser} = useSelector(state => state.user);
+    const {currentVideo} = useSelector(state => state.video);
+    const dispatch = useDispatch();
 
-    const path = useLocation().pathname.split('/')[2]
+    const path = useLocation().pathname.split('/')[2];
 
-    const [channel, setChannel] = useState({})
+    const [channel, setChannel] = useState({});
 
     useEffect(() => {
         const fetchData = async() => {
             try {
-                const videoRes = await axios.get(`/videos/find/${path}`)
-                const channelRes = await axios.get(`/users/find/${videoRes.data.userId}`)
-                setChannel(channelRes.data)
-                dispatch(fetchSuccess(videoRes.data))
+                const videoRes = await axios.get(`/videos/find/${path}`);
+                const channelRes = await axios.get(`/users/find/${videoRes.data.userId}`);
+                setChannel(channelRes.data);
+                dispatch(fetchSuccess(videoRes.data));
             } catch (err) {
             }
         }
-        fetchData()
+        fetchData();
     }, [path, dispatch])
 
     const handleLike = async() => {
-        await axios.put(`/users/like/${currentVideo._id}`)
-        dispatch(like(currentUser._id))
+        await axios.put(`/users/like/${currentVideo._id}`);
+        dispatch(like(currentUser._id));
     }
 
     const handleDislike = async() => {
-        await axios.put(`/users/dislike/${currentVideo._id}`)
-        dispatch(dislike(currentUser._id))
+        await axios.put(`/users/dislike/${currentVideo._id}`);
+        dispatch(dislike(currentUser._id));
     }
 
     const handleSubscribe = async() => {
         currentUser.subscribedUsers.includes(channel._id)
             ? await axios.put(`/users/unsubscribe/${channel._id}`)
-            : await axios.put(`/users/subscribe/${channel._id}`)
-        dispatch(subscription(channel._id))
+            : await axios.put(`/users/subscribe/${channel._id}`);
+        dispatch(subscription(channel._id));
     }
 
     return (
@@ -225,7 +225,7 @@ const Video = () => {
                 tags={currentVideo?.tags}
             />
         </Container>
-    )
+    );
 }
 
-export default Video
+export default Video;

@@ -1,9 +1,9 @@
-import {useEffect, useState} from 'react'
-import {useSelector} from 'react-redux'
+import {useEffect, useState} from 'react';
+import {useSelector} from 'react-redux';
 
-import axios from 'axios'
-import styled from 'styled-components'
-import Comment from './Comment'
+import axios from 'axios';
+import styled from 'styled-components';
+import Comment from './Comment';
 
 const Container = styled.div``
 const NewComment = styled.div`
@@ -28,19 +28,18 @@ const Input = styled.input`
 `
 
 const Comments = ({videoId}) => {
-    const {currentUser} = useSelector(state => state.user)
+    const {currentUser} = useSelector(state => state.user);
 
-    const [comments, setComments] = useState([])
+    const [comments, setComments] = useState([]);
 
     useEffect(() => {
         const fetchComments = async() => {
             try {
-                const res = await axios.get(`/comments/${videoId}`)
-                setComments(res.data)
-            } catch (err) {
-            }
+                const res = await axios.get(`/comments/${videoId}`);
+                setComments(res.data);
+            } catch (err) {}
         }
-        fetchComments()
+        fetchComments();
     }, [videoId])
 
     return (
@@ -60,7 +59,7 @@ const Comments = ({videoId}) => {
                 ))
             }
         </Container>
-    )
+    );
 }
 
-export default Comments
+export default Comments;

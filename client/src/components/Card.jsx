@@ -1,10 +1,10 @@
-import {useEffect, useState} from 'react'
-import {Link} from 'react-router-dom'
+import {useEffect, useState} from 'react';
+import {Link} from 'react-router-dom';
 
-import styled from 'styled-components'
-import axios from 'axios'
-import {format} from 'timeago.js'
-import placeholder from '../img/placeholder.jpg'
+import styled from 'styled-components';
+import axios from 'axios';
+import {format} from 'timeago.js';
+import placeholder from '../img/placeholder.jpg';
 
 const Container = styled.div`
   display: ${(props) => props.type === 'sm' && 'flex'};
@@ -54,14 +54,14 @@ const Info = styled.div`
 `
 
 const Card = ({type, video}) => {
-    const [channel, setChannel] = useState({})
+    const [channel, setChannel] = useState({});
 
     useEffect(() => {
         const fetchChannel = async() => {
-            const res = await axios.get(`/users/find/${video.userId}`)
-            setChannel(res.data)
+            const res = await axios.get(`/users/find/${video.userId}`);
+            setChannel(res.data);
         }
-        fetchChannel()
+        fetchChannel();
     }, [video.userId])
 
     return (
@@ -88,7 +88,7 @@ const Card = ({type, video}) => {
                 </Details>
             </Container>
         </Link>
-    )
+    );
 }
 
-export default Card
+export default Card;

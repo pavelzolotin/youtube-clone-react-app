@@ -1,25 +1,25 @@
-import {Link} from 'react-router-dom'
-import {useSelector} from 'react-redux'
+import {Link} from 'react-router-dom';
+import {useSelector} from 'react-redux';
 
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-import LogoImage from '../img/logo.png'
-import HomeIcon from '@mui/icons-material/Home'
-import ExploreOutlinedIcon from '@mui/icons-material/ExploreOutlined'
-import SubscriptionsOutlinedIcon from '@mui/icons-material/SubscriptionsOutlined'
-import VideoLibraryOutlinedIcon from '@mui/icons-material/VideoLibraryOutlined'
-import HistoryOutlinedIcon from '@mui/icons-material/HistoryOutlined'
-import LibraryMusicOutlinedIcon from '@mui/icons-material/LibraryMusicOutlined'
-import SportsEsportsOutlinedIcon from '@mui/icons-material/SportsEsportsOutlined'
-import SportsBasketballOutlinedIcon from '@mui/icons-material/SportsBasketballOutlined'
-import MovieOutlinedIcon from '@mui/icons-material/MovieOutlined'
-import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined'
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined'
-import LiveTvOutlinedIcon from '@mui/icons-material/LiveTvOutlined'
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
-import FlagOutlinedIcon from '@mui/icons-material/FlagOutlined'
-import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined'
-import SettingsBrightnessOutlinedIcon from '@mui/icons-material/SettingsBrightnessOutlined'
+import LogoImage from '../img/logo.png';
+import HomeIcon from '@mui/icons-material/Home';
+import ExploreOutlinedIcon from '@mui/icons-material/ExploreOutlined';
+import SubscriptionsOutlinedIcon from '@mui/icons-material/SubscriptionsOutlined';
+import VideoLibraryOutlinedIcon from '@mui/icons-material/VideoLibraryOutlined';
+import HistoryOutlinedIcon from '@mui/icons-material/HistoryOutlined';
+import LibraryMusicOutlinedIcon from '@mui/icons-material/LibraryMusicOutlined';
+import SportsEsportsOutlinedIcon from '@mui/icons-material/SportsEsportsOutlined';
+import SportsBasketballOutlinedIcon from '@mui/icons-material/SportsBasketballOutlined';
+import MovieOutlinedIcon from '@mui/icons-material/MovieOutlined';
+import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import LiveTvOutlinedIcon from '@mui/icons-material/LiveTvOutlined';
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import FlagOutlinedIcon from '@mui/icons-material/FlagOutlined';
+import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
+import SettingsBrightnessOutlinedIcon from '@mui/icons-material/SettingsBrightnessOutlined';
 
 const Container = styled.div`
   flex: 1;
@@ -83,7 +83,7 @@ const Title = styled.h2`
 `
 
 const Sidebar = ({darkMode, setDarkMode}) => {
-    const {currentUser} = useSelector(state => state.user)
+    const {currentUser} = useSelector(state => state.user);
 
     return (
         <Container>
@@ -187,7 +187,7 @@ const Sidebar = ({darkMode, setDarkMode}) => {
                 </Item>
             </Wrapper>
         </Container>
-    )
+    );
 }
 
-export default Sidebar
+export default Sidebar;

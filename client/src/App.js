@@ -1,15 +1,15 @@
-import {useState} from 'react'
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import styled, {ThemeProvider, createGlobalStyle} from 'styled-components'
+import {useState} from 'react';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import styled, {ThemeProvider, createGlobalStyle} from 'styled-components';
 
-import Sidebar from './components/Sidebar'
-import Navbar from './components/Navbar'
-import Home from './pages/Home'
-import Video from './pages/Video'
-import SignIn from './pages/SignIn'
-import Search from './pages/Search'
+import Sidebar from './components/Sidebar';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import Video from './pages/Video';
+import SignIn from './pages/SignIn';
+import Search from './pages/Search';
 
-import {darkTheme, lightTheme} from './utils/Theme'
+import {darkTheme, lightTheme} from './utils/Theme';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -52,7 +52,7 @@ const Wrapper = styled.div`
 `
 
 function App() {
-    const [darkMode, setDarkMode] = useState(true)
+    const [darkMode, setDarkMode] = useState(true);
 
     return (
         <ThemeProvider
@@ -109,7 +109,7 @@ function App() {
                 </BrowserRouter>
             </Container>
         </ThemeProvider>
-    )
+    );
 }
 
-export default App
+export default App;

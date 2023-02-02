@@ -1,10 +1,10 @@
-import {useEffect, useState} from 'react'
-import {useLocation} from 'react-router-dom'
+import {useEffect, useState} from 'react';
+import {useLocation} from 'react-router-dom';
 
-import axios from 'axios'
-import styled from 'styled-components'
+import axios from 'axios';
+import styled from 'styled-components';
 
-import Card from '../components/Card'
+import Card from '../components/Card';
 
 const Container = styled.div`
   display: flex;
@@ -13,16 +13,16 @@ const Container = styled.div`
 `
 
 const Search = () => {
-    const [videos, setVideos] = useState([])
+    const [videos, setVideos] = useState([]);
 
-    const query = useLocation().search
+    const query = useLocation().search;
 
     useEffect(() => {
         const fetchVideos = async() => {
-            const res = await axios.get(`/videos/search${query}`)
-            setVideos(res.data)
+            const res = await axios.get(`/videos/search${query}`);
+            setVideos(res.data);
         }
-        fetchVideos()
+        fetchVideos();
     }, [query])
 
     return (
@@ -34,7 +34,7 @@ const Search = () => {
                 />
             ))}
         </Container>
-    )
+    );
 }
 
-export default Search
+export default Search;

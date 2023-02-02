@@ -1,12 +1,12 @@
-import {useState} from 'react'
-import {useDispatch} from 'react-redux'
+import {useState} from 'react';
+import {useDispatch} from 'react-redux';
 
-import styled from 'styled-components'
-import axios from 'axios'
+import styled from 'styled-components';
+import axios from 'axios';
 
-import {loginFailure, loginStart, loginSuccess} from '../redux/userSlice'
-import {auth, provider} from '../firebase'
-import {signInWithPopup} from 'firebase/auth'
+import {loginFailure, loginStart, loginSuccess} from '../redux/userSlice';
+import {auth, provider} from '../firebase';
+import {signInWithPopup} from 'firebase/auth';
 
 
 const Container = styled.div`
@@ -69,26 +69,26 @@ const Link = styled.span`
 `
 
 const SignIn = () => {
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const dispatch = useDispatch()
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const dispatch = useDispatch();
 
     const handleLogin = async(e) => {
-        e.preventDefault()
-        dispatch(loginStart())
+        e.preventDefault();
+        dispatch(loginStart());
         try {
             const res = await axios.post('/auth/sign-in', {
                 name, password
-            })
-            dispatch(loginSuccess(res.data))
+            });
+            dispatch(loginSuccess(res.data));
         } catch (err) {
-            dispatch(loginFailure())
+            dispatch(loginFailure());
         }
     }
 
     const signInWithGoogle = async() => {
-        dispatch(loginStart())
+        dispatch(loginStart());
         signInWithPopup(auth, provider)
             .then(result => {
                 axios.post('/auth/google', {
@@ -97,12 +97,12 @@ const SignIn = () => {
                     img: result.user.photoURL
                 })
                     .then(res => {
-                        dispatch(loginSuccess(res.data))
+                        dispatch(loginSuccess(res.data));
                     })
             })
             .catch(err => {
-                dispatch(loginFailure())
-            })
+                dispatch(loginFailure());
+            });
     }
 
     return (
@@ -152,7 +152,7 @@ const SignIn = () => {
                 </Links>
             </Info>
         </Container>
-    )
+    );
 }
 
-export default SignIn
+export default SignIn;

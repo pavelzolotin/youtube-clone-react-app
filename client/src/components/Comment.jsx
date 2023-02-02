@@ -1,7 +1,7 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react';
 
-import axios from 'axios'
-import styled from 'styled-components'
+import axios from 'axios';
+import styled from 'styled-components';
 
 const Container = styled.div`
   display: flex;
@@ -37,14 +37,14 @@ const Text = styled.span`
 `
 
 const Comment = ({comment}) => {
-    const [channel, setChannel] = useState({})
+    const [channel, setChannel] = useState({});
 
     useEffect(() => {
         const fetchComment = async() => {
-            const res = await axios.get(`/users/find/${comment.userId}`)
-            setChannel(res.data)
+            const res = await axios.get(`/users/find/${comment.userId}`);
+            setChannel(res.data);
         }
-        fetchComment()
+        fetchComment();
     }, [comment.userId])
 
     return (
@@ -61,7 +61,7 @@ const Comment = ({comment}) => {
                 </Text>
             </Details>
         </Container>
-    )
+    );
 }
 
-export default Comment
+export default Comment;

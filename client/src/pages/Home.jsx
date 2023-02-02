@@ -1,9 +1,9 @@
-import {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react';
 
-import styled from 'styled-components'
-import axios from 'axios'
+import styled from 'styled-components';
+import axios from 'axios';
 
-import Card from '../components/Card'
+import Card from '../components/Card';
 
 const Container = styled.div`
   display: flex;
@@ -12,14 +12,14 @@ const Container = styled.div`
 `
 
 const Home = ({type}) => {
-    const [videos, setVideos] = useState([])
+    const [videos, setVideos] = useState([]);
 
     useEffect(() => {
         const fetchVideos = async() => {
-            const res = await axios.get(`/videos/${type}`)
-            setVideos(res.data)
+            const res = await axios.get(`/videos/${type}`);
+            setVideos(res.data);
         }
-        fetchVideos()
+        fetchVideos();
     }, [type])
 
     return (
@@ -33,7 +33,7 @@ const Home = ({type}) => {
                 ))
             }
         </Container>
-    )
+    );
 }
 
-export default Home
+export default Home;

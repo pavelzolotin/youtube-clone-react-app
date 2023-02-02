@@ -1,4 +1,4 @@
-import {createSlice} from '@reduxjs/toolkit'
+import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
     currentUser: null,
@@ -11,15 +11,15 @@ const videoSlice = createSlice({
     initialState,
     reducers: {
         fetchStart: (state) => {
-            state.loading = true
+            state.loading = true;
         },
         fetchSuccess: (state, action) => {
-            state.loading = false
-            state.currentVideo = action.payload
+            state.loading = false;
+            state.currentVideo = action.payload;
         },
         fetchFailure: (state) => {
-            state.loading = false
-            state.error = true
+            state.loading = false;
+            state.error = true;
         },
         like: (state, action) => {
             if (!state.currentVideo.likes.includes(action.payload)) {
@@ -44,8 +44,8 @@ const videoSlice = createSlice({
             }
         }
     }
-})
+});
 
-export const {fetchStart, fetchSuccess, fetchFailure, like, dislike} = videoSlice.actions
+export const {fetchStart, fetchSuccess, fetchFailure, like, dislike} = videoSlice.actions;
 
-export default videoSlice.reducer
+export default videoSlice.reducer;
