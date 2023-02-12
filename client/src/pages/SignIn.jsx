@@ -1,8 +1,8 @@
 import {useState} from 'react';
 import {useDispatch} from 'react-redux';
 
-import styled from 'styled-components';
 import axios from 'axios';
+import styled from 'styled-components';
 
 import {loginFailure, loginStart, loginSuccess} from '../redux/userSlice';
 import {auth, provider} from '../firebase';
@@ -16,7 +16,8 @@ const Container = styled.div`
   justify-content: center;
   height: calc(100vh - 56px);
   color: ${({theme}) => theme.text};
-`
+`;
+
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
@@ -26,16 +27,19 @@ const Wrapper = styled.div`
   background-color: ${({theme}) => theme.bgBody};
   border: 1px solid ${({theme}) => theme.dividerColor};
   border-radius: 5px;
-`
+`;
+
 const Title = styled.h1`
   font-size: 24px;
   text-transform: uppercase;
-`
+`;
+
 const SubTitle = styled.h2`
   margin: 8px 0 8px 0;
   font-size: 20px;
   font-weight: 300;
-`
+`;
+
 const Input = styled.input`
   width: 100%;
   padding: 10px;
@@ -43,7 +47,8 @@ const Input = styled.input`
   border: 1px solid ${({theme}) => theme.textSoft};
   border-radius: 5px;
   background-color: transparent;
-`
+`;
+
 const Button = styled.button`
   padding: 10px 20px;
   font-weight: 500;
@@ -54,19 +59,22 @@ const Button = styled.button`
   color: ${({theme}) => theme.text};
   background-color: ${({theme}) => theme.dividerColor};
   cursor: pointer;
-`
+`;
+
 const Info = styled.div`
   display: flex;
   font-size: 12px;
   margin-top: 10px;
   color: ${({theme}) => theme.text};
-`
+`;
+
 const Links = styled.div`
   margin-left: 50px;
-`
+`;
+
 const Link = styled.span`
   margin-left: 30px;
-`
+`;
 
 const SignIn = () => {
     const [name, setName] = useState('');
@@ -85,7 +93,7 @@ const SignIn = () => {
         } catch (err) {
             dispatch(loginFailure());
         }
-    }
+    };
 
     const signInWithGoogle = async() => {
         dispatch(loginStart());
@@ -103,7 +111,7 @@ const SignIn = () => {
             .catch(err => {
                 dispatch(loginFailure());
             });
-    }
+    };
 
     return (
         <Container>
@@ -119,13 +127,13 @@ const SignIn = () => {
                     placeholder="password"
                     onChange={e => setPassword(e.target.value)}
                 />
-                <Button
-                    onClick={handleLogin}
-                >
+                <Button onClick={handleLogin}>
                     Sign In
                 </Button>
                 <SubTitle>or</SubTitle>
-                <Button onClick={signInWithGoogle}>Sign In with Google</Button>
+                <Button onClick={signInWithGoogle}>
+                    Sign In with Google
+                </Button>
                 <SubTitle>or</SubTitle>
                 <Input
                     placeholder="username"
@@ -153,6 +161,6 @@ const SignIn = () => {
             </Info>
         </Container>
     );
-}
+};
 
 export default SignIn;

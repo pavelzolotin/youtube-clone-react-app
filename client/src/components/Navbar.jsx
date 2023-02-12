@@ -3,6 +3,7 @@ import {useSelector} from 'react-redux';
 import {Link, useNavigate} from 'react-router-dom';
 
 import styled from 'styled-components';
+import LogoImage from '../img/logo.png';
 import VideoCallOutlinedIcon from '@mui/icons-material/VideoCallOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
@@ -13,46 +14,113 @@ const Container = styled.div`
   top: 0;
   height: 56px;
   background-color: ${({theme}) => theme.bgSidebar};
+  z-index: 10;
   transition: background-color .3s;
-`
+
+  @media (max-width: 767px) {
+    height: 95px;
+  }
+`;
+
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
   position: relative;
   height: 100%;
-  padding: 0 20px;
-`
+  padding: 5px 20px;
+
+  @media (max-width: 767px) {
+    align-items: start;
+    justify-content: space-between;
+  }
+`;
+
+const LogoBox = styled.div`
+  @media (min-width: 767px) {
+    display: none;
+  }
+`;
+
+const Logo = styled.div`
+  @media (max-width: 767px) {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #f5f5f5;
+  }
+`;
+
+const Img = styled.img`
+  height: 25px;
+`;
+
 const Search = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   position: absolute;
   width: 40%;
   left: 0;
   right: 0;
-  margin: auto;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-`
+  margin: 0 auto 0 auto;
+
+  @media (max-width: 767px) {
+    width: 90%;
+    margin: 40px auto 0 auto;
+  }
+`;
+
 const SearchIcon = styled.div`
-  display: flex;
-  align-items: center;
-  color: ${({theme}) => theme.text};
+  position: absolute;
+  top: 12px;
+  right: 15px;
+  color: #b7b7b7;
   cursor: pointer;
-`
+`;
+
 const Input = styled.input`
   width: 100%;
-  color: ${({theme}) => theme.text};
-  font-size: 16px;
-  border: none;
-  background-color: transparent;
+  font-size: 18px;
+  color: #b7b7b7;
+  padding: 10px 25px;
+  letter-spacing: 0.16px;
+  border: 2px solid #343739;
+  border-radius: 30px;
+  background: transparent;
+  transition: border .3s ease;
 
+  & ~ .search__input--bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #343739;
+    border-radius: 30px;
+    opacity: 0;
+    transition: .5s;
+    z-index: -1;
+  }
+  
   &:focus-visible {
     outline: none;
+    border: 2px solid #7e7e7e;
+    transition: border .3s ease;
   }
-`
+
+  &:focus ~ .search__input--bg {
+    transition: .5s;
+    opacity: 1;
+    outline: none;
+  }
+`;
+
+const InputBg = styled.span`
+  &:focus {
+    transition: .5s;
+    opacity: 1;
+    outline: none;
+  }
+`;
+
 const Button = styled.button`
   display: flex;
   align-items: center;
@@ -65,30 +133,39 @@ const Button = styled.button`
   font-weight: 500;
   margin: 15px 0 15px 0;
   cursor: pointer;
-`
+`;
+
 const User = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
   font-weight: 500;
   color: ${({theme}) => theme.text};
-`
+`;
+
 const Avatar = styled.img`
   width: 32px;
   height: 32px;
   border-radius: 50%;
   background-color: #999;
-`
+`;
+
 const UploadFileButton = styled.div`
   cursor: pointer;
-`
+`;
+
 const SearchClose = styled.div`
-  display: flex;
-  margin-right: 15px;
-  font-weight: 500;
-  color: ${({theme}) => theme.text};
+  position: absolute;
+  top: 15px;
+  right: 55px;
+  font-size: 14px;
+  color: #7e7e7e;
   cursor: pointer;
-`
+
+  @media (max-width: 767px) {
+    font-size: 16px;
+  }
+`;
 
 const Navbar = () => {
     const [uploadFileOpen, setUploadFileOpen] = useState(false);
@@ -98,16 +175,24 @@ const Navbar = () => {
 
     const addQuery = (e) => {
         setQuery(e.target.value);
-    }
+    };
 
     const clearQuery = () => {
         setQuery('');
-    }
+    };
 
     return (
         <>
             <Container>
                 <Wrapper>
+                    <LogoBox>
+                        <Link to="/">
+                            <Logo>
+                                <Img src={LogoImage}/>
+                                NewTube
+                            </Logo>
+                        </Link>
+                    </LogoBox>
                     <Search>
                         <Input
                             placeholder="Search"
@@ -116,9 +201,7 @@ const Navbar = () => {
                         />
                         {
                             query.length > 0 ? (
-                                <SearchClose
-                                    onClick={clearQuery}
-                                >
+                                <SearchClose onClick={clearQuery}>
                                     <span>X</span>
                                 </SearchClose>
                             ) : (
@@ -130,6 +213,7 @@ const Navbar = () => {
                                 onClick={() => navigate(`/search?q=${query}`)}
                             />
                         </SearchIcon>
+                        <InputBg className="search__input--bg"/>
                     </Search>
                     {currentUser ? (
                         <User>
@@ -144,7 +228,7 @@ const Navbar = () => {
                             {currentUser.name}
                         </User>
                     ) : (
-                        <Link to="sign-in" style={{textDecoration: 'none'}}>
+                        <Link to="sign-in">
                             <Button>
                                 <AccountCircleOutlinedIcon/>
                                 SIGN IN
@@ -162,6 +246,6 @@ const Navbar = () => {
             }
         </>
     );
-}
+};
 
 export default Navbar;

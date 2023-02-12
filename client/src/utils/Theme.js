@@ -5,7 +5,7 @@ export const darkTheme = {
     textSoft: "#aaaaaa",
     dividerColor: "#373737",
     scrollbarBgColor: '#202020'
-}
+};
 
 export const lightTheme = {
     bgSidebar: "#f9f9f9",
@@ -14,4 +14,4 @@ export const lightTheme = {
     textSoft: "#606060",
     dividerColor: "#e3e3e3",
     scrollbarBgColor: '#ffffff'
-}
+};

@@ -26,23 +26,31 @@ const Container = styled.div`
   position: sticky;
   top: 0;
   height: 100vh;
-  font-size: 14px;
+  font-size: 16px;
   background-color: ${({theme}) => theme.bgSidebar};
   color: ${({theme}) => theme.text};
   transition: all .3s;
-`
+
+  @media (max-width: 767px) {
+    display: none;
+  }
+`;
+
 const Wrapper = styled.div`
   padding: 18px 26px
-`
+`;
+
 const Logo = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
   margin-bottom: 25px;
-`
+`;
+
 const Img = styled.img`
   height: 25px;
-`
+`;
+
 const Item = styled.div`
   display: flex;
   align-items: center;
@@ -54,13 +62,15 @@ const Item = styled.div`
   &:hover {
     background-color: ${({theme}) => theme.dividerColor};
   }
-`
+`;
+
 const SectionDivider = styled.hr`
   margin: 15px 0;
   border: 0.5px solid ${({theme}) => theme.dividerColor};
   transition: border .3s ease;
-`
-const Login = styled.div``
+`;
+
+const Login = styled.div``;
 
 const Button = styled.button`
   display: flex;
@@ -74,13 +84,14 @@ const Button = styled.button`
   font-weight: 500;
   margin: 15px 0 15px 0;
   cursor: pointer;
-`
+`;
+
 const Title = styled.h2`
   font-size: 14px;
   font-weight: 500;
   color: #aaaaaa;
   margin-bottom: 20px;
-`
+`;
 
 const Sidebar = ({darkMode, setDarkMode}) => {
     const {currentUser} = useSelector(state => state.user);
@@ -88,25 +99,25 @@ const Sidebar = ({darkMode, setDarkMode}) => {
     return (
         <Container>
             <Wrapper>
-                <Link to="/" style={{textDecoration: 'none', color: 'inherit'}}>
+                <Link to="/">
                     <Logo>
                         <Img src={LogoImage}/>
                         NewTube
                     </Logo>
                 </Link>
-                <Link to="/" style={{textDecoration: 'none', color: 'inherit'}}>
+                <Link to="/">
                     <Item>
                         <HomeIcon/>
                         Home
                     </Item>
                 </Link>
-                <Link to="trends" style={{textDecoration: 'none', color: 'inherit'}}>
+                <Link to="trends">
                     <Item>
                         <ExploreOutlinedIcon/>
                         Explore
                     </Item>
                 </Link>
-                <Link to="subscriptions" style={{textDecoration: 'none', color: 'inherit'}}>
+                <Link to="subscriptions">
                     <Item>
                         <SubscriptionsOutlinedIcon/>
                         Subscriptions
@@ -122,25 +133,26 @@ const Sidebar = ({darkMode, setDarkMode}) => {
                     History
                 </Item>
                 <SectionDivider/>
-                {!currentUser ? (
-                    <>
-                        <Login>
-                            Sign in to like videos, comment and subscribe.
-                            <Link to="sign-in" style={{textDecoration: 'none'}}>
-                                <Button>
-                                    <AccountCircleOutlinedIcon/>
-                                    SIGN IN
-                                </Button>
-                            </Link>
-                        </Login>
-                        <SectionDivider/>
-                        <Title>In trends</Title>
-                    </>
-                ) : (
-                    <>
-                        <Title>Subscriptions</Title>
-                    </>
-                )
+                {
+                    !currentUser ? (
+                        <>
+                            <Login>
+                                Sign in to like videos, comment and subscribe.
+                                <Link to="sign-in">
+                                    <Button>
+                                        <AccountCircleOutlinedIcon/>
+                                        SIGN IN
+                                    </Button>
+                                </Link>
+                            </Login>
+                            <SectionDivider/>
+                            <Title>In trends</Title>
+                        </>
+                    ) : (
+                        <>
+                            <Title>Subscriptions</Title>
+                        </>
+                    )
                 }
                 <Item>
                     <LibraryMusicOutlinedIcon/>
@@ -179,15 +191,13 @@ const Sidebar = ({darkMode, setDarkMode}) => {
                     <HelpOutlineOutlinedIcon/>
                     Help
                 </Item>
-                <Item
-                    onClick={() => setDarkMode(!darkMode)}
-                >
+                <Item onClick={() => setDarkMode(!darkMode)}>
                     <SettingsBrightnessOutlinedIcon/>
                     {darkMode ? 'Dark Theme' : 'Light Theme'}
                 </Item>
             </Wrapper>
         </Container>
     );
-}
+};
 
 export default Sidebar;

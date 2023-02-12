@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 
-import styled from 'styled-components';
 import axios from 'axios';
+import styled from 'styled-components';
 
 import Card from '../components/Card';
 
@@ -9,7 +9,7 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-`
+`;
 
 const Home = ({type}) => {
     const [videos, setVideos] = useState([]);
@@ -18,7 +18,7 @@ const Home = ({type}) => {
         const fetchVideos = async() => {
             const res = await axios.get(`/videos/${type}`);
             setVideos(res.data);
-        }
+        };
         fetchVideos();
     }, [type]);
 
@@ -34,6 +34,6 @@ const Home = ({type}) => {
             }
         </Container>
     );
-}
+};
 
 export default Home;

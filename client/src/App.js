@@ -22,6 +22,15 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
   }
 
+  a {
+    color: ${({theme}) => theme.text};
+    text-decoration: none;
+
+    @media (max-width: 767px) {
+      width: 100%;
+    }
+  }
+
   ::-webkit-scrollbar {
     width: 16px;
   }
@@ -38,18 +47,21 @@ const GlobalStyle = createGlobalStyle`
     background-clip: padding-box;
     background-color: #aaaaaa;
   }
-`
+`;
+
 const Container = styled.div`
   display: flex;
-`
+`;
+
 const Main = styled.div`
   flex: 7;
   background-color: ${({theme}) => theme.bgBody};
   transition: background-color .3s;
-`
+`;
+
 const Wrapper = styled.div`
-  padding: 25px 85px;
-`
+  padding: 60px 15px;
+`;
 
 function App() {
     const [darkMode, setDarkMode] = useState(true);
@@ -71,36 +83,24 @@ function App() {
                             <Routes>
                                 <Route path="/">
                                     <Route index element={
-                                        <Home
-                                            type="random"
-                                        />
-                                    }
-                                    />
+                                        <Home type="random"/>
+                                    }/>
                                     <Route path="trends" element={
-                                        <Home
-                                            type="trend"
-                                        />
-                                    }
-                                    />
+                                        <Home type="trend"/>
+                                    }/>
                                     <Route path="subscriptions" element={
-                                        <Home
-                                            type="subscribe"
-                                        />
-                                    }
-                                    />
+                                        <Home type="subscribe"/>
+                                    }/>
                                     <Route path="search" element={
                                         <Search/>
-                                    }
-                                    />
+                                    }/>
                                     <Route path="sign-in" element={
                                         <SignIn/>
-                                    }
-                                    />
+                                    }/>
                                     <Route path="video">
                                         <Route path=":id" element={
                                             <Video/>
-                                        }
-                                        />
+                                        }/>
                                     </Route>
                                 </Route>
                             </Routes>

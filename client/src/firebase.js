@@ -8,7 +8,7 @@ const firebaseConfig = {
     storageBucket: "video-dfd55.appspot.com",
     messagingSenderId: "281121085340",
     appId: "1:281121085340:web:bd25507846274c61285a59"
-}
+};
 
 const app = initializeApp(firebaseConfig);
 

@@ -4,7 +4,7 @@ const initialState = {
     currentUser: null,
     loading: false,
     error: false
-}
+};
 
 const videoSlice = createSlice({
     name: 'video',

@@ -20,72 +20,108 @@ import {subscription} from '../redux/userSlice';
 const Container = styled.div`
   display: flex;
   gap: 24px;
-`
-const VideoWrapper = styled.div``
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
+`;
+
+const VideoWrapper = styled.div``;
 
 const Content = styled.div`
   flex: 5;
-`
+`;
+
 const Details = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    gap: 20px;
+  }
+`;
+
 const Title = styled.h1`
   font-size: 18px;
   font-weight: 400;
   margin: 20px 0 10px 0;
   color: ${({theme}) => theme.text};
-`
+
+  @media (max-width: 767px) {
+    margin: 20px 0 30px 0;
+  }
+`;
+
 const Info = styled.span`
   color: ${({theme}) => theme.textSoft};
-`
+`;
+
 const Buttons = styled.div`
   display: flex;
   gap: 20px;
   color: ${({theme}) => theme.text};
-`
+`;
+
 const Button = styled.div`
   display: flex;
   align-items: center;
   gap: 7px;
-`
+`;
+
 const SectionDivider = styled.hr`
-  margin: 20px;
+  margin: 20px 0;
   border: 1px solid ${({theme}) => theme.textSoft};
-`
+`;
+
 const Channel = styled.div`
   display: flex;
   justify-content: space-between;
-`
+
+  @media (max-width: 767px) {
+    align-items: center;
+  }
+`;
+
 const ChannelInfo = styled.div`
   display: flex;
   gap: 20px;
-`
+`;
+
 const ChannelDetail = styled.div`
   display: flex;
   flex-direction: column;
   color: ${({theme}) => theme.text};
-`
+`;
+
 const ChannelName = styled.span`
   font-weight: 500;
-`
+`;
+
 const ChannelCounter = styled.span`
   display: flex;
   justify-content: space-between;
   margin: 5px 0 20px 0;
   color: ${({theme}) => theme.textSoft};
   font-size: 12px;
-`
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
+`;
+
 const Image = styled.img`
   width: 50px;
   height: 50px;
   border-radius: 60%;
   background-color: ${({theme}) => theme.textSoft};
-`
+`;
+
 const Description = styled.p`
   font-size: 14px;
-`
+`;
+
 const Subscribe = styled.button`
   height: max-content;
   padding: 10px;
@@ -94,13 +130,13 @@ const Subscribe = styled.button`
   color: white;
   border: none;
   border-radius: 3px;
-`
+`;
 
 const VideoFrame = styled.video`
   max-height: 720px;
   width: 100%;
   object-fit: cover;
-`
+`;
 
 const Video = () => {
     const {currentUser} = useSelector(state => state.user);
@@ -118,27 +154,29 @@ const Video = () => {
                 const channelRes = await axios.get(`/users/find/${videoRes.data.userId}`);
                 setChannel(channelRes.data);
                 dispatch(fetchSuccess(videoRes.data));
-            } catch (err) {}
-        }
+            } catch (err) {
+                console.warn(err);
+            }
+        };
         fetchData();
     }, [path, dispatch]);
 
     const handleLike = async() => {
         await axios.put(`/users/like/${currentVideo._id}`);
         dispatch(like(currentUser._id));
-    }
+    };
 
     const handleDislike = async() => {
         await axios.put(`/users/dislike/${currentVideo._id}`);
         dispatch(dislike(currentUser._id));
-    }
+    };
 
     const handleSubscribe = async() => {
         currentUser.subscribedUsers.includes(channel._id)
             ? await axios.put(`/users/unsubscribe/${channel._id}`)
             : await axios.put(`/users/subscribe/${channel._id}`);
         dispatch(subscription(channel._id));
-    }
+    };
 
     return (
         <Container>
@@ -157,9 +195,7 @@ const Video = () => {
                         {currentVideo?.views} views • {format(currentVideo?.createdAt)}
                     </Info>
                     <Buttons>
-                        <Button
-                            onClick={handleLike}
-                        >
+                        <Button onClick={handleLike}>
                             {
                                 currentVideo.likes?.includes(currentUser?._id) ? (
                                     <ThumbUpIcon/>
@@ -169,9 +205,7 @@ const Video = () => {
                             }{''}
                             {currentVideo.likes?.length}
                         </Button>
-                        <Button
-                            onClick={handleDislike}
-                        >
+                        <Button onClick={handleDislike}>
                             {
                                 currentVideo.dislikes?.includes(currentUser?._id) ? (
                                     <ThumbDownIcon/>
@@ -194,9 +228,7 @@ const Video = () => {
                 <SectionDivider/>
                 <Channel>
                     <ChannelInfo>
-                        <Image
-                            src={channel?.img}
-                        />
+                        <Image src={channel?.img}/>
                         <ChannelDetail>
                             <ChannelName>{channel?.name}</ChannelName>
                             <ChannelCounter>{channel?.subscribers} subscribers</ChannelCounter>
@@ -205,9 +237,7 @@ const Video = () => {
                             </Description>
                         </ChannelDetail>
                     </ChannelInfo>
-                    <Subscribe
-                        onClick={handleSubscribe}
-                    >
+                    <Subscribe onClick={handleSubscribe}>
                         {
                             currentUser.subscribedUsers?.includes(channel?._id)
                                 ? 'Subscribed'
@@ -216,15 +246,11 @@ const Video = () => {
                     </Subscribe>
                 </Channel>
                 <SectionDivider/>
-                <Comments
-                    videoId={currentVideo?._id}
-                />
+                <Comments videoId={currentVideo?._id}/>
             </Content>
-            <Recommendation
-                tags={currentVideo?.tags}
-            />
+            <Recommendation tags={currentVideo?.tags}/>
         </Container>
     );
-}
+};
 
 export default Video;

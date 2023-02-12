@@ -1,8 +1,8 @@
 import {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 
-import styled from 'styled-components';
 import axios from 'axios';
+import styled from 'styled-components';
 import {
     getStorage,
     ref,
@@ -21,7 +21,8 @@ const Container = styled.div`
   top: 0;
   left: 0;
   background-color: #000000a7;
-`
+`;
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -32,17 +33,20 @@ const Wrapper = styled.div`
   color: ${({theme}) => theme.text};
   padding: 20px;
   gap: 20px;
-`
+`;
+
 const Close = styled.div`
   position: absolute;
   top: 20px;
   right: 20px;
   z-index: 1;
   cursor: pointer;
-`
+`;
+
 const Title = styled.h1`
   text-align: center;
-`
+`;
+
 const Input = styled.input`
   border: 1px solid ${({theme}) => theme.dividerColor};
   color: ${({theme}) => theme.text};
@@ -50,14 +54,16 @@ const Input = styled.input`
   padding: 10px;
   background-color: transparent;
   z-index: 999;
-`
+`;
+
 const Desc = styled.textarea`
   border: 1px solid ${({theme}) => theme.dividerColor};
   color: ${({theme}) => theme.text};
   border-radius: 3px;
   padding: 10px;
   background-color: transparent;
-`
+`;
+
 const Button = styled.button`
   border-radius: 3px;
   border: none;
@@ -66,11 +72,12 @@ const Button = styled.button`
   cursor: pointer;
   background-color: ${({theme}) => theme.dividerColor};
   color: ${({theme}) => theme.text};
-`
+`;
+
 const Label = styled.label`
   color: ${({theme}) => theme.text};
   font-size: 14px;
-`
+`;
 
 const Upload = ({setUploadFileOpen}) => {
     const [img, setImg] = useState(null);
@@ -82,23 +89,23 @@ const Upload = ({setUploadFileOpen}) => {
 
     const navigate = useNavigate();
 
-    const handleUpload = async(e) => {
+    const handleUpload = async (e) => {
         e.preventDefault();
         const res = await axios.post('/videos', {...inputs, tags});
 
         setUploadFileOpen(false);
         res.status === 200 && navigate(`/video/${res.data._id}`);
-    }
+    };
 
     const handleChange = (e) => {
         setInputs(prev => {
             return {...prev, [e.target.name]: e.target.value};
         });
-    }
+    };
 
     const handleTags = (e) => {
         setTags(e.target.value.split(','));
-    }
+    };
 
     const uploadFile = (file, urlType) => {
         const storage = getStorage(app);
@@ -123,7 +130,8 @@ const Upload = ({setUploadFileOpen}) => {
                         break;
                 }
             },
-            (error) => {},
+            (error) => {
+            },
             () => {
                 getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                     setInputs((prev) => {
@@ -132,7 +140,7 @@ const Upload = ({setUploadFileOpen}) => {
                 });
             }
         );
-    }
+    };
 
     useEffect(() => {
         video && uploadFile(video, 'videoUrl');
@@ -145,9 +153,7 @@ const Upload = ({setUploadFileOpen}) => {
     return (
         <Container>
             <Wrapper>
-                <Close
-                    onClick={() => setUploadFileOpen(false)}
-                >
+                <Close onClick={() => setUploadFileOpen(false)}>
                     X
                 </Close>
                 <Title>Upload a new video</Title>
@@ -192,14 +198,12 @@ const Upload = ({setUploadFileOpen}) => {
                         />
                     )
                 }
-                <Button
-                    onClick={handleUpload}
-                >
+                <Button onClick={handleUpload}>
                     Upload
                 </Button>
             </Wrapper>
         </Container>
     );
-}
+};
 
 export default Upload;
