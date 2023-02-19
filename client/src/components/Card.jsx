@@ -7,10 +7,10 @@ import {format} from 'timeago.js';
 import placeholder from '../img/placeholder.jpg';
 
 const Container = styled.div`
-  display: ${(props) => props.type === 'sm' && 'flex'};
+  display: ${({type}) => type === 'sm' && 'flex'};
   gap: 12px;
-  width: ${(props) => props.type !== 'sm' && '360px'};
-  margin-bottom: ${(props) => props.type === 'sm' ? '12px' : '45px'};;
+  width: ${({type}) => type !== 'sm' && '360px'};
+  margin-bottom: ${({type}) => type === 'sm' ? '12px' : '45px'};;
   cursor: pointer;
 
   @media (max-width: 767px) {
@@ -22,7 +22,7 @@ const Image = styled.img`
   display: flex;
   flex: 1;
   width: 100%;
-  height: ${(props) => props.type === 'sm' ? '100px' : '200px'};
+  height: ${({type}) => type === 'sm' ? '100px' : '200px'};
   object-fit: cover;
   background-color: #999;
   border-radius: 10px;
@@ -31,12 +31,12 @@ const Image = styled.img`
 const Details = styled.div`
   display: flex;
   flex: 1;
-  margin-top: ${(props) => props.type !== 'sm' && '15px'};
+  margin-top: ${({type}) => type !== 'sm' && '15px'};
   gap: 12px;
 `;
 
 const ChannelImage = styled.div`
-  display: ${(props) => props.type === 'sm' && 'none'};
+  display: ${({type}) => type === 'sm' && 'none'};
   width: 35px;
   height: 35px;
   border-radius: 50%;
