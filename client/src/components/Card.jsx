@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 import {format} from 'timeago.js';
-import placeholder from '../img/placeholder.jpg';
 
 const Container = styled.div`
   display: ${({type}) => type === 'sm' && 'flex'};
@@ -79,7 +78,7 @@ const Card = ({type, video}) => {
             <Container type={type}>
                 <Image
                     type={type}
-                    src={placeholder}
+                    src={video.imgUrl}
                 />
                 <Details type={type}>
                     <ChannelImage

@@ -60,7 +60,7 @@ const Main = styled.div`
 `;
 
 const Wrapper = styled.div`
-  padding: 60px 15px;
+  padding: 60px 90px;
 `;
 
 function App() {
