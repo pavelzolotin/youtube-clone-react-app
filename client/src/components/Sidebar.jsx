@@ -3,7 +3,7 @@ import {useSelector} from 'react-redux';
 
 import styled from 'styled-components';
 
-import LogoImage from '../img/logo.png';
+import LogoImage from '../assets/img/logo.png';
 import HomeIcon from '@mui/icons-material/Home';
 import ExploreOutlinedIcon from '@mui/icons-material/ExploreOutlined';
 import SubscriptionsOutlinedIcon from '@mui/icons-material/SubscriptionsOutlined';

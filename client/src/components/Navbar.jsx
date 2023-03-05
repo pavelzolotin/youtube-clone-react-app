@@ -3,7 +3,7 @@ import {useSelector} from 'react-redux';
 import {Link, useNavigate} from 'react-router-dom';
 
 import styled from 'styled-components';
-import LogoImage from '../img/logo.png';
+import LogoImage from '../assets/img/logo.png';
 import VideoCallOutlinedIcon from '@mui/icons-material/VideoCallOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
