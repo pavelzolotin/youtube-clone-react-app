@@ -101,38 +101,38 @@ const Sidebar = ({darkMode, setDarkMode}) => {
             <Wrapper>
                 <Link to="/">
                     <Logo>
-                        <Img src={LogoImage}/>
+                        <Img src={LogoImage} />
                         NewTube
                     </Logo>
                 </Link>
                 <Link to="/">
                     <Item>
-                        <HomeIcon/>
+                        <HomeIcon />
                         Home
                     </Item>
                 </Link>
                 <Link to="trends">
                     <Item>
-                        <ExploreOutlinedIcon/>
+                        <ExploreOutlinedIcon />
                         Explore
                     </Item>
                 </Link>
                 <Link to="subscriptions">
                     <Item>
-                        <SubscriptionsOutlinedIcon/>
+                        <SubscriptionsOutlinedIcon />
                         Subscriptions
                     </Item>
                 </Link>
-                <SectionDivider/>
+                <SectionDivider />
                 <Item>
-                    <VideoLibraryOutlinedIcon/>
+                    <VideoLibraryOutlinedIcon />
                     Library
                 </Item>
                 <Item>
-                    <HistoryOutlinedIcon/>
+                    <HistoryOutlinedIcon />
                     History
                 </Item>
-                <SectionDivider/>
+                <SectionDivider />
                 {
                     !currentUser ? (
                         <>
@@ -140,12 +140,12 @@ const Sidebar = ({darkMode, setDarkMode}) => {
                                 Sign in to like videos, comment and subscribe.
                                 <Link to="sign-in">
                                     <Button>
-                                        <AccountCircleOutlinedIcon/>
+                                        <AccountCircleOutlinedIcon />
                                         SIGN IN
                                     </Button>
                                 </Link>
                             </Login>
-                            <SectionDivider/>
+                            <SectionDivider />
                             <Title>In trends</Title>
                         </>
                     ) : (
@@ -155,44 +155,44 @@ const Sidebar = ({darkMode, setDarkMode}) => {
                     )
                 }
                 <Item>
-                    <LibraryMusicOutlinedIcon/>
+                    <LibraryMusicOutlinedIcon />
                     Music
                 </Item>
                 <Item>
-                    <SportsBasketballOutlinedIcon/>
+                    <SportsBasketballOutlinedIcon />
                     Sports
                 </Item>
                 <Item>
-                    <SportsEsportsOutlinedIcon/>
+                    <SportsEsportsOutlinedIcon />
                     Gaming
                 </Item>
                 <Item>
-                    <MovieOutlinedIcon/>
+                    <MovieOutlinedIcon />
                     Movies
                 </Item>
                 <Item>
-                    <ArticleOutlinedIcon/>
+                    <ArticleOutlinedIcon />
                     News
                 </Item>
                 <Item>
-                    <LiveTvOutlinedIcon/>
+                    <LiveTvOutlinedIcon />
                     Live
                 </Item>
-                <SectionDivider/>
+                <SectionDivider />
                 <Item>
-                    <SettingsOutlinedIcon/>
+                    <SettingsOutlinedIcon />
                     Settings
                 </Item>
                 <Item>
-                    <FlagOutlinedIcon/>
+                    <FlagOutlinedIcon />
                     Report
                 </Item>
                 <Item>
-                    <HelpOutlineOutlinedIcon/>
+                    <HelpOutlineOutlinedIcon />
                     Help
                 </Item>
                 <Item onClick={() => setDarkMode(!darkMode)}>
-                    <SettingsBrightnessOutlinedIcon/>
+                    <SettingsBrightnessOutlinedIcon />
                     {darkMode ? 'Dark Theme' : 'Light Theme'}
                 </Item>
             </Wrapper>

@@ -45,7 +45,7 @@ const Comment = ({comment}) => {
     const [channel, setChannel] = useState({});
 
     useEffect(() => {
-        const fetchComment = async() => {
+        const fetchComment = async () => {
             const res = await axios.get(`/users/find/${comment.userId}`);
             setChannel(res.data);
         };
@@ -54,7 +54,7 @@ const Comment = ({comment}) => {
 
     return (
         <Container>
-            <Avatar src={channel.img}/>
+            <Avatar src={channel.img} />
             <Details>
                 <Name>
                     {channel.name}

@@ -70,7 +70,7 @@ function App() {
         <ThemeProvider
             theme={darkMode ? darkTheme : lightTheme}
         >
-            <GlobalStyle/>
+            <GlobalStyle />
             <Container>
                 <BrowserRouter>
                     <Sidebar
@@ -78,29 +78,29 @@ function App() {
                         setDarkMode={setDarkMode}
                     />
                     <Main>
-                        <Navbar/>
+                        <Navbar />
                         <Wrapper>
                             <Routes>
                                 <Route path="/">
                                     <Route index element={
-                                        <Home type="random"/>
-                                    }/>
+                                        <Home type="random" />
+                                    } />
                                     <Route path="trends" element={
-                                        <Home type="trend"/>
-                                    }/>
+                                        <Home type="trend" />
+                                    } />
                                     <Route path="subscriptions" element={
-                                        <Home type="subscribe"/>
-                                    }/>
+                                        <Home type="subscribe" />
+                                    } />
                                     <Route path="search" element={
-                                        <Search/>
-                                    }/>
+                                        <Search />
+                                    } />
                                     <Route path="sign-in" element={
-                                        <SignIn/>
-                                    }/>
+                                        <SignIn />
+                                    } />
                                     <Route path="video">
                                         <Route path=":id" element={
-                                            <Video/>
-                                        }/>
+                                            <Video />
+                                        } />
                                     </Route>
                                 </Route>
                             </Routes>

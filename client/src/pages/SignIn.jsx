@@ -82,7 +82,7 @@ const SignIn = () => {
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
 
-    const handleLogin = async(e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
         dispatch(loginStart());
         try {
@@ -95,7 +95,7 @@ const SignIn = () => {
         }
     };
 
-    const signInWithGoogle = async() => {
+    const signInWithGoogle = async () => {
         dispatch(loginStart());
         signInWithPopup(auth, provider)
             .then(result => {

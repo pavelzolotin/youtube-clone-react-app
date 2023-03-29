@@ -99,7 +99,7 @@ const Input = styled.input`
     transition: .5s;
     z-index: -1;
   }
-  
+
   &:focus-visible {
     outline: none;
     border: 2px solid #7e7e7e;
@@ -188,7 +188,7 @@ const Navbar = () => {
                     <LogoBox>
                         <Link to="/">
                             <Logo>
-                                <Img src={LogoImage}/>
+                                <Img src={LogoImage} />
                                 NewTube
                             </Logo>
                         </Link>
@@ -213,7 +213,7 @@ const Navbar = () => {
                                 onClick={() => navigate(`/search?q=${query}`)}
                             />
                         </SearchIcon>
-                        <InputBg className="search__input--bg"/>
+                        <InputBg className="search__input--bg" />
                     </Search>
                     {currentUser ? (
                         <User>
@@ -230,7 +230,7 @@ const Navbar = () => {
                     ) : (
                         <Link to="sign-in">
                             <Button>
-                                <AccountCircleOutlinedIcon/>
+                                <AccountCircleOutlinedIcon />
                                 SIGN IN
                             </Button>
                         </Link>

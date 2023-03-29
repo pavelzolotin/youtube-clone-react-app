@@ -148,7 +148,7 @@ const Video = () => {
     const [channel, setChannel] = useState({});
 
     useEffect(() => {
-        const fetchData = async() => {
+        const fetchData = async () => {
             try {
                 const videoRes = await axios.get(`/videos/find/${path}`);
                 const channelRes = await axios.get(`/users/find/${videoRes.data.userId}`);
@@ -161,17 +161,17 @@ const Video = () => {
         fetchData();
     }, [path, dispatch]);
 
-    const handleLike = async() => {
+    const handleLike = async () => {
         await axios.put(`/users/like/${currentVideo._id}`);
         dispatch(like(currentUser._id));
     };
 
-    const handleDislike = async() => {
+    const handleDislike = async () => {
         await axios.put(`/users/dislike/${currentVideo._id}`);
         dispatch(dislike(currentUser._id));
     };
 
-    const handleSubscribe = async() => {
+    const handleSubscribe = async () => {
         currentUser.subscribedUsers.includes(channel._id)
             ? await axios.put(`/users/unsubscribe/${channel._id}`)
             : await axios.put(`/users/subscribe/${channel._id}`);
@@ -198,9 +198,9 @@ const Video = () => {
                         <Button onClick={handleLike}>
                             {
                                 currentVideo.likes?.includes(currentUser?._id) ? (
-                                    <ThumbUpIcon/>
+                                    <ThumbUpIcon />
                                 ) : (
-                                    <ThumbUpOutlinedIcon/>
+                                    <ThumbUpOutlinedIcon />
                                 )
                             }{''}
                             {currentVideo.likes?.length}
@@ -208,27 +208,27 @@ const Video = () => {
                         <Button onClick={handleDislike}>
                             {
                                 currentVideo.dislikes?.includes(currentUser?._id) ? (
-                                    <ThumbDownIcon/>
+                                    <ThumbDownIcon />
                                 ) : (
-                                    <ThumbDownOffAltOutlinedIcon/>
+                                    <ThumbDownOffAltOutlinedIcon />
                                 )
                             }{''}
                             Dislike
                         </Button>
                         <Button>
-                            <ReplyOutlinedIcon/>
+                            <ReplyOutlinedIcon />
                             Share
                         </Button>
                         <Button>
-                            <AddTaskOutlinedIcon/>
+                            <AddTaskOutlinedIcon />
                             Save
                         </Button>
                     </Buttons>
                 </Details>
-                <SectionDivider/>
+                <SectionDivider />
                 <Channel>
                     <ChannelInfo>
-                        <Image src={channel?.img}/>
+                        <Image src={channel?.img} />
                         <ChannelDetail>
                             <ChannelName>{channel?.name}</ChannelName>
                             <ChannelCounter>{channel?.subscribers} subscribers</ChannelCounter>
@@ -245,10 +245,10 @@ const Video = () => {
                         }
                     </Subscribe>
                 </Channel>
-                <SectionDivider/>
-                <Comments videoId={currentVideo?._id}/>
+                <SectionDivider />
+                <Comments videoId={currentVideo?._id} />
             </Content>
-            <Recommendation tags={currentVideo?.tags}/>
+            <Recommendation tags={currentVideo?.tags} />
         </Container>
     );
 };
